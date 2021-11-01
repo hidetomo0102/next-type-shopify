@@ -6,13 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tailwind": "tailwindcss -i ./assets/main.css -o tailwind.css ./assets/dist.css -w"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.0",
     "deepmerge": "^4.2.2",
     "next": "^11.1.2",
+    "postcss": "^8.3.11",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
     "@types/react": "^17.0.9",
