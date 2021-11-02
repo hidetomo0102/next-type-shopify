@@ -1,0 +1,15 @@
+&:nth-child(6n + 1) .productBg {
+  @apply bg-violet;
+}
+
+&:nth-child(6n + 3) .productBg {
+  @apply bg-pink;
+}
+
+&:nth-child(6n + 5) .productBg {
+  @apply bg-blue;
+}
+
+&:nth-child(6n + 6) .productBg {
+  @apply bg-cyan;
+}

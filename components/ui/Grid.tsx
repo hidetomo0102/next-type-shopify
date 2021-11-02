@@ -1,5 +1,4 @@
 import { FC, ReactNode } from "react";
-import s from "./Grid.module.css";
 
 export const Grid: FC<ReactNode> = ({ children }) => {
   return (

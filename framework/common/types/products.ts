@@ -3,6 +3,11 @@ export type ProductImage = {
   alt?: string;
 };
 
+export type ProductPrice = {
+  value: number;
+  currencyCode: "USD" | "EUR" | string;
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -10,4 +15,5 @@ export type Product = {
   slug: string;
   path: string;
   images: Array<ProductImage>;
+  price: ProductPrice;
 };
