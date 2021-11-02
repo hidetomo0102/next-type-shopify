@@ -1,4 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from "next";
+
+import { ProductCard } from "../components/product/ProductCard";
+import { Grid } from "../components/ui/Grid";
 import { getConfig } from "../framework/shopify/api/config";
 import { getAllProducts } from "../framework/shopify/product/getAllProducts";
 
@@ -17,5 +20,11 @@ export async function getStaticProps() {
 export default function Home({
   products,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return <div>{JSON.stringify(products)}</div>;
+  return (
+    <Grid>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </Grid>
+  );
 }
