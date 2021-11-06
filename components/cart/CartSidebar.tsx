@@ -1,12 +1,13 @@
 import { FC } from "react";
-import Link from "next/dist/client/link";
 import cn from "classnames";
 
 import { Bag } from "../icons/Bag";
 import { Cross } from "../icons/Cross";
+import { useUI } from "../ui/context";
 
 export const CartSidebar: FC = () => {
   const isEmpty = true;
+  const { closeSidebar } = useUI();
 
   const rootClass = cn("h-full flex flex-col", {
     "bg-secondary text-secondary": isEmpty,
@@ -18,7 +19,7 @@ export const CartSidebar: FC = () => {
         <div className="flex items-start justify-between space-x-3">
           <div className="h-7 flex items-center">
             <button
-              onClick={() => alert("Closing Sidebar")}
+              onClick={closeSidebar}
               className="hover:text-gray-500 transition ease-in-out duration-150"
             >
               <Cross className="h-6 w-6" />
