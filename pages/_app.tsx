@@ -1,22 +1,24 @@
-import { AppProps } from "next/dist/shared/lib/router/router";
 import { FC } from "react";
+import { AppProps } from "next/app";
 
 import "../assets/main.css";
+import { UIProvider, useUI } from "../components/ui/context";
 
-const Noop: FC = ({ children }) => <>{children}</>;
-
-const MyApp = ({
+function MyApp({
   Component,
   pageProps,
-}: AppProps & { Component: { Layout: FC } }) => {
-  const Layout = Component.Layout ?? Noop;
+}: AppProps & { Component: { Layout: FC } }) {
+  const Layout = Component.Layout;
+  const ui = useUI();
+  console.log(ui);
+
   return (
-    <div>
+    <UIProvider>
       <Layout>
         <Component {...pageProps} />
       </Layout>
-    </div>
+    </UIProvider>
   );
-};
+}
 
 export default MyApp;
