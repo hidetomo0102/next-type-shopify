@@ -3,6 +3,7 @@ import Image from "next/dist/client/image";
 
 import { Product } from "../../framework/common/types/products";
 import { Container } from "../ui/Container";
+import { ProductSlider } from "./ProductSlider/ProductSlider";
 
 type Props = {
   product: Product;
@@ -18,23 +19,28 @@ export const ProductView: FC<Props> = ({ product }) => {
         >
           <div className="absolute inset-0 bg-violet z-0 h-full lg:left-6 lg:pr-16">
             <h1 className="px-6 py-2 bg-primary text-primary font-bold">
-              Product Name
+              {product.name}
             </h1>
             <div className="px-6 py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide">
+              {product.price.value}
               50
-              {` `}$
+              {product.price.currencyCode}
             </div>
           </div>
-          <div className="h-full">
-            <Image
-              className="w-full h-auto max-h-full object-cover"
-              src={"/product-image-placeholder.svg"}
-              alt={"Product Image"}
-              width={1050}
-              height={1050}
-              quality="85"
-            />
-          </div>
+          <ProductSlider>
+            {product.images.map((image) => (
+              <div className="h-full" key={image.url}>
+                <Image
+                  className="w-full h-auto max-h-full object-cover"
+                  src={image.url}
+                  alt={image.alt}
+                  width={1050}
+                  height={1050}
+                  quality="85"
+                />
+              </div>
+            ))}
+          </ProductSlider>
         </div>
         <div className="flex flex-col col-span-1 mx-auto max-w-8xl px-6 w-full h-full">
           <section>
@@ -43,7 +49,7 @@ export const ProductView: FC<Props> = ({ product }) => {
               <div className="flex flex-row py-4">Variant Options Here!</div>
             </div>
             <div className="pb-14 break-words w-full max-w-xl text-lg">
-              Product description...
+              {product.description}
             </div>
           </section>
           <div>
