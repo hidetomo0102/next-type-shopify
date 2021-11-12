@@ -8,6 +8,23 @@ export type ProductPrice = {
   currencyCode: "USD" | "EUR" | string;
 };
 
+export type ProductOptionValues = {
+  label: string;
+  hexColor?: string;
+};
+
+export type ProductOption = {
+  id: string;
+  displayName: string;
+  values: ProductOptionValues[];
+};
+
+export type ProductVariant = {
+  id: string;
+  name: string;
+  options: ProductOption[];
+};
+
 export type Product = {
   id: string;
   name: string;
@@ -16,4 +33,6 @@ export type Product = {
   path: string;
   images: Array<ProductImage>;
   price: ProductPrice;
+  options: ProductOption[];
+  variants: ProductVariant[];
 };
