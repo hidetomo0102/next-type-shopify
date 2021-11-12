@@ -5,6 +5,7 @@ import {
 } from "next";
 
 import { Layout } from "../../components/common/Layout";
+import { ProductView } from "../../components/product/ProductView";
 import { Container } from "../../components/ui/Container";
 import { getConfig } from "../../framework/shopify/api/config";
 import { getAllProductsPaths } from "../../framework/shopify/product/getAllProductsPaths";
@@ -39,49 +40,7 @@ export const getStaticProps = async ({
 export default function ProductSlug({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Container>
-      <p>id: {product?.id}</p>
-      <p>name: {product?.name}</p>
-      <p>price value: {product?.price.value}</p>
-      <p>price currency: {product?.price.currencyCode}</p>
-      <p>description: {product?.description}</p>
-
-      <h1 className="mb-4">OPTIONS</h1>
-      <div>
-        {product?.options.map((option) => (
-          <div>
-            <p>Name: {option.displayName}</p>
-            {option.values.map((value) => (
-              <div>
-                <p>Label: {value.label}</p>
-                <p>Hex Color: {value.hexColor}</p>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-      <h1 className="mb-4">VARIANTS</h1>
-      <div>
-        {product?.variants.map((variant) => (
-          <div>
-            <p>Variant Name: {variant.name}</p>
-            {variant.options.map((vo) => (
-              <div>
-                <p>Name: {vo.displayName}</p>
-                {vo.values.map((value) => (
-                  <div>
-                    <p>Label: {value.label}</p>
-                    <p>Hexcolot: {value.hexColor}</p>
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-    </Container>
-  );
+  return <>{product && <ProductView product={product} />}</>;
 }
 
 ProductSlug.Layout = Layout;
