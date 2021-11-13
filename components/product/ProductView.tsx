@@ -4,6 +4,7 @@ import Image from "next/dist/client/image";
 import { Product } from "../../framework/common/types/products";
 import { Container } from "../ui/Container";
 import { ProductSlider } from "./ProductSlider/ProductSlider";
+import { Button } from "../ui/Button/Button";
 
 type Props = {
   product: Product;
@@ -53,13 +54,12 @@ export const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <button
-              onClick={() => {}}
-              aria-label="Add to Cart"
-              style={{ textAlign: "center", width: "100%", maxWidth: 300 }}
+            <Button
+              className="text-center w-full max-w-xs"
+              onClick={() => alert("add to cart")}
             >
               Add to Cart
-            </button>
+            </Button>
           </div>
         </div>
       </div>
