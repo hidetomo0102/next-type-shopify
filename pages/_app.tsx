@@ -1,3 +1,4 @@
+import "keen-slider/keen-slider.min.css";
 import { FC } from "react";
 import { AppProps } from "next/app";
 
