@@ -5,6 +5,7 @@ import { Product } from "../../framework/common/types/products";
 import { Container } from "../ui/Container";
 import { ProductSlider } from "./ProductSlider/ProductSlider";
 import { Button } from "../ui/Button/Button";
+import { Swatch } from "./Swatch/Swatch";
 
 type Props = {
   product: Product;
@@ -45,10 +46,19 @@ export const ProductView: FC<Props> = ({ product }) => {
         </div>
         <div className="flex flex-col col-span-1 mx-auto max-w-8xl px-6 w-full h-full">
           <section>
-            <div className="pb-4">
-              <h2 className="uppercase font-medium">Color</h2>
-              <div className="flex flex-row py-4">Variant Options Here!</div>
-            </div>
+            {product.options.map((option) => (
+              <div key={option.id} className="pb-4">
+                <h2 className="uppercase font-medium">{option.displayName}</h2>
+                {option.values.map((optValue) => (
+                  <Swatch
+                    key={`${option.id}-${optValue.label}`}
+                    label={optValue.label}
+                    color={optValue.hexColor}
+                  />
+                ))}
+              </div>
+            ))}
+
             <div className="pb-14 break-words w-full max-w-xl text-lg">
               {product.description}
             </div>
