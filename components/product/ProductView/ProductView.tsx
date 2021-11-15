@@ -22,7 +22,6 @@ type Choices = {
 export const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({});
 
-  console.log(choices);
   return (
     <Container>
       <div className={cn(s.root, "fit", "mb-5")}>
