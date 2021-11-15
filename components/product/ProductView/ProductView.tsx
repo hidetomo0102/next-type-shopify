@@ -9,6 +9,7 @@ import { ProductSlider } from "../ProductSlider/ProductSlider";
 import { Button } from "../../ui/Button/Button";
 import { Swatch } from "../Swatch/Swatch";
 import { Choices, getVariant } from "../helper";
+import { useUI } from "../../ui/context";
 
 interface Props {
   product: Product;
@@ -16,8 +17,22 @@ interface Props {
 
 export const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({});
+  const { openSlider } = useUI();
 
   const variant = getVariant(product, choices);
+
+  const addToCart = () => {
+    try {
+      const item = {
+        productId: String(product.id),
+        variantId: variant?.id,
+        variantOptions: variant?.options,
+      };
+
+      alert(JSON.stringify(item));
+      openSlider();
+    } catch {}
+  };
 
   return (
     <Container>
