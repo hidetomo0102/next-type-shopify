@@ -680,6 +680,9 @@ video {
 .mr-6 {
 	margin-right: 1.5rem;
 }
+.mb-5 {
+	margin-bottom: 1.25rem;
+}
 .box-border {
 	box-sizing: border-box;
 }

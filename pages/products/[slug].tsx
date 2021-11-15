@@ -5,7 +5,7 @@ import {
 } from "next";
 
 import { Layout } from "../../components/common/Layout";
-import { ProductView } from "../../components/product/ProductView";
+import { ProductView } from "../../components/product/ProductView/ProductView";
 import { Container } from "../../components/ui/Container";
 import { getConfig } from "../../framework/shopify/api/config";
 import { getAllProductsPaths } from "../../framework/shopify/product/getAllProductsPaths";
