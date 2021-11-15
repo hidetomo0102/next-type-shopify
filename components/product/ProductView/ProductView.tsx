@@ -8,19 +8,16 @@ import { Container } from "../../ui/Container";
 import { ProductSlider } from "../ProductSlider/ProductSlider";
 import { Button } from "../../ui/Button/Button";
 import { Swatch } from "../Swatch/Swatch";
+import { Choices, getVariant } from "../helper";
 
 interface Props {
   product: Product;
 }
 
-type AvailableChoices = "color" | "size" | string;
-
-type Choices = {
-  [P in AvailableChoices]: string;
-};
-
 export const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({});
+
+  const variant = getVariant(product, choices);
 
   return (
     <Container>
