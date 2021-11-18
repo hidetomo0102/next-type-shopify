@@ -11,6 +11,7 @@ import { Swatch } from "../Swatch/Swatch";
 import { Choices, getVariant } from "../helper";
 import { useUI } from "../../ui/context";
 import { useAddItem } from "../../../framework/common/cart/useAddItem";
+import { useApiProvider } from "../../../framework/common";
 
 interface Props {
   product: Product;
@@ -20,6 +21,7 @@ export const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({});
   const { openSlider } = useUI();
   const addItem = useAddItem();
+  const api = useApiProvider();
 
   const variant = getVariant(product, choices);
 
