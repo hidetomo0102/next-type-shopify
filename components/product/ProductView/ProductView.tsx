@@ -10,6 +10,7 @@ import { Button } from "../../ui/Button/Button";
 import { Swatch } from "../Swatch/Swatch";
 import { Choices, getVariant } from "../helper";
 import { useUI } from "../../ui/context";
+import { useAddItem } from "../../../framework/common/cart/useAddItem";
 
 interface Props {
   product: Product;
@@ -18,6 +19,7 @@ interface Props {
 export const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({});
   const { openSlider } = useUI();
+  const addItem = useAddItem();
 
   const variant = getVariant(product, choices);
 
@@ -29,7 +31,8 @@ export const ProductView: FC<Props> = ({ product }) => {
         variantOptions: variant?.options,
       };
 
-      alert(JSON.stringify(item));
+      const output = addItem(item);
+      alert(JSON.stringify(output));
       openSlider();
     } catch {}
   };
@@ -95,10 +98,7 @@ export const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <Button
-              className={s.button}
-              onClick={() => alert("adding to cart")}
-            >
+            <Button className={s.button} onClick={addToCart}>
               Add to Cart
             </Button>
           </div>
