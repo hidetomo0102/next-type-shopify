@@ -1,16 +1,11 @@
-export const useAddItem = () => {
-  return handler.useHook();
-};
+import { useHook } from "../utils/useHook";
 
-const handler = {
-  fetcher: () => {
-    console.log("Fetching Data");
-  },
-  useHook: () => {
-    return (input: any) => {
-      return {
-        output: JSON.stringify(input) + "_MODIFIED",
-      };
-    };
-  },
+export const useAddItem = () => {
+  const hook = useHook((hooks) => {
+    return hooks.cart.useAddItem;
+  });
+
+  return hook.useHook({
+    fetch: hook.fetcher,
+  });
 };
