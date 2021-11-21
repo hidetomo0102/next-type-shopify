@@ -1,11 +1,10 @@
 import { ApiFetcherOptions, ApiFetcherResults } from "../../common/types/api";
 
 export const fetchApi = async <T>({
-  url,
   query,
   variables,
 }: ApiFetcherOptions): Promise<ApiFetcherResults<T>> => {
-  const res = await fetch(url, {
+  const res = await fetch("shopify_local", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

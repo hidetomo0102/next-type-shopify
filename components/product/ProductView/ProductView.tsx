@@ -23,7 +23,7 @@ export const ProductView: FC<Props> = ({ product }) => {
 
   const variant = getVariant(product, choices);
 
-  const addToCart = () => {
+  const addToCart = async () => {
     try {
       const item = {
         productId: String(product.id),
@@ -31,7 +31,7 @@ export const ProductView: FC<Props> = ({ product }) => {
         variantOptions: variant?.options,
       };
 
-      const output = addItem(item);
+      const output = await addItem(item);
       alert(JSON.stringify(output));
       openSlider();
     } catch {}
